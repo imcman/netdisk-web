@@ -1,29 +1,19 @@
-import Vue from "vue";
-import Vuex from "vuex";
+// import Vue from 'vue'
+import Vuex from 'vuex'
+import getters from './getters'
+import app from './modules/app'
+import settings from './modules/settings'
+import user from './modules/user'
 
-import file from "./module/fileList"; // 引入 file 模块
-import imgReview from "./module/imgReview";
-import audioReview from "./module/audioReview";
-import player from "@/store/module/videoPlayer";
-import codeReview from "./module/codeReview";
-Vue.use(Vuex);
+Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {},
-  getters: {
-    // 查看模式 - 0 列表 | 1 网格 | 2 时间线
-    showModel: state =>
-      state.file.showModel === null ? 0 : Number(state.file.showModel)
-  },
-  mutations: {},
-  actions: {
-    //
-  },
+const store = new Vuex.Store({
   modules: {
-    file,
-    imgReview,
-    audioReview,
-    player,
-    codeReview
-  }
-});
+    app,
+    settings,
+    user
+  },
+  getters
+})
+
+export default store
